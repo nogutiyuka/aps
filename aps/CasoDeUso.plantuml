@@ -1,0 +1,28 @@
+@startuml ExemploCasoDeUso
+skinparam actorStyle awesome
+    left to right direction
+'oi eu to comentando aqui  
+'de preferencia atores primeiro
+    :Farmaceutico: as F1
+    :Caixa: as C1
+'depois casos de uso
+    (Pesquisar Remedios \npor Laboratorio) as CU001
+    (Consultar Cadastro de Remédio) as CU002
+    (Verificar Historico de Vendas) as CU003
+    (Gerenciar Laboratório) as CU004
+    (Finalizar Venda) as CU005
+    (Atualiazar Estoque) as CU006
+
+'depois os relacionamentos
+    F1 -- CU001
+    F1 -- CU002
+    C1 -- CU003 
+    'o farmaceutico consegue gerenciar laboratorio tanto atraves da pesquisa de remedios por laboratorio quanto diretamente 
+    CU001 <.. CU004: <<extend>>
+    C1 -- CU005
+    'nesse caso o caixa n consegue atualizar estoque direto, precisa finalizar a venda primeiro
+    CU005 ..> CU006 : <<include>>
+    F1 -- CU004
+    
+
+@enduml
